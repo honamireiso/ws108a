@@ -13,7 +13,6 @@ app.use(async function(ctx) {
   console.log('fpath=', fpath)
   if (fstat.isFile()) {
     let ext = extname(fpath)
-    // console.log('ext=', ext)
     if (ext === '.md') {
       let md = await fs.promises.readFile(fpath, 'utf8')
       let html = mdRender(md)
@@ -31,7 +30,7 @@ if (!module.parent) {
   console.log('server run at http://localhost:3000/')
 }
 
-// mdRender函數用來加上html的頭尾(如:<html>,<head>,<body>),此後就可以套上CSS來進行美化
+// mdRender函數用來加上html的頭尾,此後就可以套上CSS來進行美化
 function mdRender(md) {
   return `
 <html>
