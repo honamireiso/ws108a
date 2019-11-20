@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>じゃんけん</title>
+</head>
+<body>
+<a href="https://cdn.rawgit.com/honamireiso/wd106b/22a24e7c/exercise/game/110610523.html" target="_blank">剪刀石頭布</a>
+<a href="https://cdn.rawgit.com/honamireiso/wd106b/22a24e7c/exercise/game/game.html" target="_blank">rock, paper, scissors</a>
+<img id="pictA1" src="石頭.jpg" style="position:absolute; left:10px; top:150px; width:100px; height:100px">
+<img id="pictA2" src="剪刀.jpg" style="position:absolute; left:10px; top:150px; width:100px; height:100px">
+<img id="pictA3" src="布.jpg" style="position:absolute; left:10px; top:150px; width:100px; height:100px">
+<div id="message1" style="position:absolute; left:10px; top:60px">
+相手の選択は？
+</div>
+<div id="message2" style="position:absolute; left:10px; top:90px">
+勝敗の結果は？
+</div>
+<form style="position:absolute; left:10px; top:120px">
+あなたの選択は　　
+<select id="mySelect">
+<option>グー</option>
+<option>チョキ</option>
+<option>パー</option>
+</select>
+<input type="button" value="決定" onclick="myGame()">
+</form>
+
+<script>
+document.getElementById("pictA1").style.visibility = "hidden";
+document.getElementById("pictA2").style.visibility = "hidden";
+document.getElementById("pictA3").style.visibility = "hidden";
+function myGame(){
+document.getElementById("pictA1").style.visibility = "hidden";
+document.getElementById("pictA2").style.visibility = "hidden";
+document.getElementById("pictA3").style.visibility = "hidden";
+myNumber = document.getElementById("mySelect").selectedIndex;
+hisNumber = Math.floor(Math.random()*3);
+if( hisNumber == 0 ){
+hisHand = "グー";
+document.getElementById("pictA1").style.visibility = "visible";
+}
+if( hisNumber == 1 ){
+hisHand = "チョキ";
+document.getElementById("pictA2").style.visibility = "visible";
+}
+if( hisNumber == 2 ){
+hisHand = "パー";
+document.getElementById("pictA3").style.visibility = "visible";
+}
+if( myNumber - hisNumber == -2 ){
+judge = "あなたの 負け";
+}
+if( myNumber - hisNumber == -1 ){
+judge = "あなたの 勝ち";
+}
+if( myNumber - hisNumber == 0 ){
+judge = "両者の 引き分け";
+}
+if( myNumber - hisNumber == 1 ){
+judge = "あなたの 負け";
+}
+if( myNumber - hisNumber == 2 ){
+judge = "あなたの 勝ち";
+}
+document.getElementById("message1").innerHTML = "電腦的選擇是 "+hisHand;
+document.getElementById("message2").innerHTML = "結果是 "+judge;
+}
+</script>
+
+</body>
+</html>
